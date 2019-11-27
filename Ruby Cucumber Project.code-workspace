@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+    ],
+	"settings": {
+        "cucumberautocomplete.steps": [
+            "features/step_definitions/*.rb",
+        ],
+        "cucumberautocomplete.syncfeatures": "features/*.feature",
+        "cucumberautocomplete.strictGherkinCompletion": true,
+        "editor.quickSuggestions": {
+            "comments": false,
+            "strings": true,
+            "other": true
+            },
+    }
+}

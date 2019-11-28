@@ -20,11 +20,16 @@ Given(/(?:I|i) am on the Google web page/) do
   # end
 
   #example step using POM
-  When(/I search for \"([^\"]*)\"/) do |search_term|
-    google = GoogleSearch.new(@driver)
-    google.search_for_term (search_term)
-  end
+  # When(/I search for \"([^\"]*)\"/) do |search_term|
+  #   google = GoogleSearch.new(@driver)
+  #   google.search_for_term (search_term)
+  # end
 
+  #example using page-objects gem
+  When(/I search for \"([^\"]*)\"/) do |search_term|
+     google = SearchPage.new(@driver)
+     google.search_for_item (search_term)
+   end
   
   #cucumber expression {string} simpler to use
   Then("{string} appears in the results") do |search_term|

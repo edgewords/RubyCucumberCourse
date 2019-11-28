@@ -1,4 +1,13 @@
 
+# exercise 1
+puts "give me a number"
+mynum = gets.chomp.to_i
+
+mynumSq = mynum * mynum
+
+puts mynumSq
+
+# exercise final
 class Calculator 
 
     def add (num1,num2)

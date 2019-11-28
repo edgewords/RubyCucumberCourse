@@ -1,11 +1,10 @@
 require "cucumber"
 require "selenium-webdriver"
 require "rspec/expectations"
+#require_relative "../page_objects/googleSearchPOM"
 
 #wait object for any required explicit waits
 wait = Selenium::WebDriver::Wait.new(:timeout => 15)
-
-SEARCH_BOX = {name: 'q'} # you can define a constant and it can be a hash
 
 Given(/(?:I|i) am on the Google web page/) do
     @driver.navigate.to "https://www.google.com" 
@@ -14,11 +13,18 @@ Given(/(?:I|i) am on the Google web page/) do
   end
   
   #regualr exp capture group which will remove quotes
+  # When(/I search for \"([^\"]*)\"/) do |search_term|
+  #   element = @driver.find_element(name: 'q')
+  #   element.send_keys search_term
+  #   element.submit
+  # end
+
+  #example step using POM
   When(/I search for \"([^\"]*)\"/) do |search_term|
-    element = @driver.find_element(SEARCH_BOX)
-    element.send_keys search_term
-    element.submit
+    google = GoogleSearch.new(@driver)
+    google.search_for_term (search_term)
   end
+
   
   #cucumber expression {string} simpler to use
   Then("{string} appears in the results") do |search_term|

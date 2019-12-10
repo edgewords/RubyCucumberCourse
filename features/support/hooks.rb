@@ -1,4 +1,5 @@
-Before do
+Before do |scenario|
+    puts scenario.name
     #global variable to reference the 'world' object
     $world = self
     #driver variable for firefox webdriver

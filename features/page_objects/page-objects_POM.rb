@@ -6,7 +6,7 @@ class SearchPage
     include PageObject #This includes the initialize constructor, so do not add another!
   
     #define locators
-    text_field(:search_field, :id => 'q')
+    text_field(:search_field, :name => 'q')
     button(:submit, :name => 'btnK')
 
     #add our methods

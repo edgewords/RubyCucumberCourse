@@ -21,10 +21,10 @@ class Calculator
             puts "No division by zero allowed!"
             return 0
         else
-            return (num1 / num2)
+            return (num1.to_f / num2.to_f)
         end
     end
 end
 
 calc =  Calculator.new
-puts calc.divide(6,2)
+puts calc.divide(6,5)

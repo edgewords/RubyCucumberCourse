@@ -2,6 +2,8 @@ require "cucumber"
 require "rspec/expectations"
 require 'httparty'
 
+# to install it, use: gem install httparty
+
 # This demo uses a demo site: http://dummy.restapiexample.com/
 # You can return different parts of the response using:
 #puts response.body # {"id":"1","employee_name":"Abhi Deepak C","employee_salary":"1000","employee_age":"23","profile_image":""

@@ -1,5 +1,5 @@
 require 'httparty'
-#require 'json'
+require 'json'
 # to install it, use: gem install httparty
 
 # This demo uses a demo site: http://dummy.restapiexample.com/
@@ -10,24 +10,31 @@ require 'httparty'
 #puts response.headers.inspect # <headers info>
 
 # This creates a new record
- @result = HTTParty.post('http://dummy.restapiexample.com/api/v1/create', 
-     :body => { :name => 'Bobalot', 
+ result = HTTParty.post('http://dummy.restapiexample.com/api/v1/create', 
+     :body => { :name => 'bertrun', 
                 :salary => '20000', 
-                :age => '25', 
-                :id => '2', 
+                :age => '25',  
               }.to_json,
      :headers => { 'Content-Type' => 'application/json' } )
- puts @result
+  hashBody = JSON.parse(result)
+  id = hashBody["id"]
+  
 
 # This updates an existing record
-@result = HTTParty.put('http://dummy.restapiexample.com/api/v1/update/1', 
+result = HTTParty.put('http://dummy.restapiexample.com/api/v1/update/' + id, 
     :body => { :name => 'jonesy', 
-               :salary => '20000', 
+               :salary => '15000', 
                :age => '25', 
              }.to_json,
     :headers => { 'Content-Type' => 'application/json' } )
-puts @result
+puts result
 
 # Now fecth a record
-response = HTTParty.get('http://dummy.restapiexample.com/api/v1/employee/1')
-puts response.body 
+response = HTTParty.get('http://dummy.restapiexample.com/api/v1/employee/' + id)
+
+# now lets turn the JSON into a Ruby Hash
+hashBody = JSON.parse(response.body) # {"id"=>"1", "employee_name"=>"jonesy", "employee_salary"=>"20000", "employee_age"=>"25", "profile_image"=>""}
+
+puts "Here is the name of id #{id}:"
+puts hashBody["employee_name"]
+
